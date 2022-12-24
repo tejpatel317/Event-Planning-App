@@ -25,7 +25,6 @@ function App() {
               <Route path="Signup" element={<Signup setUser={setUser}/>} />
             <Route/>
         </Routes>
-        <h1>{user ? user.first_name : "Not found"}</h1>
       </BrowserRouter>
     </div>
   );
