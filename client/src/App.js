@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from './Nav';
 import Home from './Home';
@@ -10,7 +10,7 @@ import Signup from './Signup';
 function App() {
   const [user, setUser] = useState(null);
 
-
+  console.log(user)
 
   return (
     <div className="App">
@@ -25,7 +25,7 @@ function App() {
               <Route path="Signup" element={<Signup setUser={setUser}/>} />
             <Route/>
         </Routes>
-        <h1></h1>
+        <h1>{user ? user.first_name : "Not found"}</h1>
       </BrowserRouter>
     </div>
   );
