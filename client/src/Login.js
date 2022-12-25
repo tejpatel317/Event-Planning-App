@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import {Form, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function Login() {
+function Login({setUser}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    /*fetch("/signup", {
+    fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,10 +16,6 @@ function Login() {
       body: JSON.stringify({
         username,
         password,
-        password_confirmation: passwordConfirmation,
-        first_name: firstName,
-        last_name: lastName,
-        email,
       }),
     }).then((r) => {
       if (r.ok) {
@@ -27,7 +23,7 @@ function Login() {
       } else {
         r.json().then((err) => console.log(err)); //FOR ERROR HANDLING LOGIC WILL BE ADDED LATER
       }
-    });*/
+    });
   }
 
 
