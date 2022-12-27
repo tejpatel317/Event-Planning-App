@@ -24,7 +24,7 @@ function Nav({user, setUser}) {
             user ? 
             (
               <>
-                <NavLink className="navbar-link navbar-right" to="/" onClick={handleLogoutClick}>>Logout</NavLink>
+                <NavLink className="navbar-link navbar-right" to="/" onClick={handleLogoutClick}>Logout</NavLink>
               </>
             )
             :

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import {Form, Button} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login({setUser}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,6 +21,7 @@ function Login({setUser}) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
+        navigate('/home')
       } else {
         r.json().then((err) => console.log(err)); //FOR ERROR HANDLING LOGIC WILL BE ADDED LATER
       }
