@@ -10,8 +10,6 @@ import Signup from './Signup';
 function App() {
   const [user, setUser] = useState(null);
 
-  console.log(user)
-
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
@@ -24,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Nav/>
+      <Nav user={user} setUser={setUser}/>
         <Routes>
             <Route path="/"/>
               <Route index element={<Home/>}/>
