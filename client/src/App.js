@@ -20,6 +20,13 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch("/events")
+      .then((r) => r.json())
+      .then((events) => setEvents(events));
+  }, []);
+
+
   return (
     <div className="App">
       <BrowserRouter>
