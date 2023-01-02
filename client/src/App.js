@@ -9,6 +9,7 @@ import Signup from './Signup';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [events, setEvents] = useState([])
 
   useEffect(() => {
     // auto-login

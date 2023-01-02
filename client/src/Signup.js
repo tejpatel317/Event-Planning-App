@@ -35,8 +35,8 @@ function Signup({setUser}) {
   }
 
   return (
-    <div className="signup-container">
-      <div className="signup-form">
+    <div className="form-container">
+      <div className="form-details">
         <Form onSubmit={handleSubmit}>
           <h2 variant="success">Sign Up</h2>
           <p>It's free and only takes minutes</p>

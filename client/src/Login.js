@@ -30,8 +30,8 @@ function Login({setUser}) {
 
 
   return (
-    <div className="signup-container">
-      <div className="signup-form">
+    <div className="form-container">
+      <div className="form-details">
         <Form onSubmit={handleSubmit}>
           <h2 variant="success">Login</h2>
           <Form.Group controlId="formUsername">

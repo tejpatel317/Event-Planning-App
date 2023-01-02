@@ -21,25 +21,25 @@
   color: white;
 }
 
-.signup-container {
+.form-container {
   background-color: #ddd;
   min-height: 93vh;
 }
 
-.signup-form {
+.form-details {
 	width: 500px;
 	margin: 0 auto;
 	padding: 70px 0;
 }
 
-.signup-form form{
+.form-details form{
 	border-radius: 15px;
   margin-bottom: 15px;
   background: #fff;
   padding: 30px;
 }
 
-.signup-form button{
+.form-details button{
   display: block;
   width: 100%;
   font-weight: 600;
