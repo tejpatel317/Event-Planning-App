@@ -26,8 +26,6 @@ function App() {
       .then((events) => setEvents(events));
   }, []);
 
-  console.log(events)
-
 
   return (
     <div className="App">
@@ -35,7 +33,7 @@ function App() {
       <Nav user={user} setUser={setUser}/>
         <Routes>
             <Route path="/"/>
-              <Route index element={<Home/>}/>
+              <Route index element={<Home events={events}/>}/>
               <Route path="Events" element={<Events/>} />
               <Route path="Create" element={<Create/>} />
               <Route path="Login" element={<Login setUser={setUser}/>} />

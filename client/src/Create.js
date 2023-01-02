@@ -34,7 +34,7 @@ function Create({}) {
   }
 
   return (
-    <div className="form-container">
+    <div className="app-container">
       <div className="form-details">
         <Form onSubmit={handleSubmit}>
           <h2 variant="success">Create an Event</h2>

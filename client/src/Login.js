@@ -30,7 +30,7 @@ function Login({setUser}) {
 
 
   return (
-    <div className="form-container">
+    <div className="app-container">
       <div className="form-details">
         <Form onSubmit={handleSubmit}>
           <h2 variant="success">Login</h2>

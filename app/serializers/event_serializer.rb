@@ -4,4 +4,5 @@ class EventSerializer < ActiveModel::Serializer
   def time
     object.time.strftime("%I:%M %p")
   end
+  
 end
