@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 function Nav({user, setUser}) {
 
@@ -24,7 +24,10 @@ function Nav({user, setUser}) {
             user ? 
             (
               <>
-                <NavLink className="navbar-link navbar-right" to="/" onClick={handleLogoutClick}>Logout</NavLink>
+                <div id="usernamecontainer">
+                  <h1 id="username">{user.first_name}</h1>
+                </div>
+                <Link className="navbar-link navbar-right" to="/" onClick={handleLogoutClick}>Logout</Link>
               </>
             )
             :

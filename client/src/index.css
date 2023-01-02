@@ -18,6 +18,7 @@
 
 .active {
   background-color: #04AA6D;
+  border-radius: 5px;
   color: white;
 }
 
@@ -43,4 +44,18 @@
   display: block;
   width: 100%;
   font-weight: 600;
+}
+
+#username {
+  color: white;
+  font-size: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 400;
+}
+
+#usernamecontainer {
+  border-radius: 5px;
+  background-color: #04AA6D;
+  padding: 0, 30px;
 }

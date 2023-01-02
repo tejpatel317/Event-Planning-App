@@ -40,7 +40,6 @@ function App() {
               <Route path="Signup" element={<Signup setUser={setUser}/>} />
             <Route/>
         </Routes>
-        <h1>{!user ? 'hello' : user.first_name}</h1>
       </BrowserRouter>
     </div>
   );
