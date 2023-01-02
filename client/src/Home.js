@@ -5,13 +5,13 @@ import HomeCard from './HomeCard'
 function Home({events}) {
 
   const homeCards = events.map((event) => {
-    return (<Col key={event.id} className="col-md-4 p-3"><HomeCard event={event}/></Col>)
+    return (<Col key={event.id} className="col-md-3 p-3"><HomeCard event={event}/></Col>)
   })
 
 
   return (
     <div className="app-container">
-      <Container>
+      <Container className="p-0">
         <Row>
           {homeCards}
         </Row>

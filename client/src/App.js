@@ -26,6 +26,8 @@ function App() {
       .then((events) => setEvents(events));
   }, []);
 
+  console.log(events)
+
 
   return (
     <div className="App">

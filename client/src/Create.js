@@ -26,7 +26,7 @@ function Create({}) {
       }),
     }).then((r) => {
       if (r.ok) {
-        navigate('/home')
+        navigate('/')
       } else {
         r.json().then((err) => console.log(err)); //FOR ERROR HANDLING LOGIC WILL BE ADDED LATER
       }
