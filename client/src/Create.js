@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Form, Button} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-function Create({}) {
+function Create({handleNewEvent}) {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [date, setDate] = useState(new Date().toJSON().slice(0,10));
@@ -27,6 +27,7 @@ function Create({}) {
     }).then((r) => {
       if (r.ok) {
         navigate('/')
+        r.json().then((newEvent) => handleNewEvent(newEvent))
       } else {
         r.json().then((err) => console.log(err)); //FOR ERROR HANDLING LOGIC WILL BE ADDED LATER
       }

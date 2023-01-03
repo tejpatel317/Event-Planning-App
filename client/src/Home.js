@@ -2,10 +2,10 @@ import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 import HomeCard from './HomeCard'
 
-function Home({events}) {
+function Home({events, user}) {
 
   const homeCards = events.map((event) => {
-    return (<Col key={event.id} className="col-md-3 p-3"><HomeCard event={event}/></Col>)
+    return (<Col key={event.id} className="col-md-3 p-3"><HomeCard event={event} user={user}/></Col>)
   })
 
 

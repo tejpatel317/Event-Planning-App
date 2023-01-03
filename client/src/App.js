@@ -26,6 +26,11 @@ function App() {
       .then((events) => setEvents(events));
   }, []);
 
+
+  function handleNewEvent(newEvent) {
+    setEvents([...events, newEvent])
+  }
+
   console.log(events)
 
 
@@ -35,9 +40,9 @@ function App() {
       <Nav user={user} setUser={setUser}/>
         <Routes>
             <Route path="/"/>
-              <Route index element={<Home events={events}/>}/>
+              <Route index element={<Home events={events} user={user}/>}/>
               <Route path="Events" element={<Events/>} />
-              <Route path="Create" element={<Create/>} />
+              <Route path="Create" element={<Create handleNewEvent={handleNewEvent}/>} />
               <Route path="Login" element={<Login setUser={setUser}/>} />
               <Route path="Signup" element={<Signup setUser={setUser}/>} />
             <Route/>
