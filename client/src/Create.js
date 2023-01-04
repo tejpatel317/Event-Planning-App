@@ -30,7 +30,7 @@ function Create({handleNewEvent, loading}) {
       }),
     }).then((r) => {
       if (r.ok) {
-        navigate('/')
+        navigate('/events')
         r.json().then((newEvent) => handleNewEvent(newEvent))
       } else {
         r.json().then((err) => console.log(err)); //FOR ERROR HANDLING LOGIC WILL BE ADDED LATER

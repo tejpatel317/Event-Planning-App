@@ -69,8 +69,8 @@ function MyEventCard({user, event, updateEvent}) {
               <Card.Title>{name}</Card.Title>
               <Card.Subtitle>{location}</Card.Subtitle>  
               <Card.Text>{`Date: ${date}, Time: ${time}`}</Card.Text>  
-              <Button className="eventpagebutton" variant="danger">Cancel</Button>
-              <Button className="eventpagebutton" variant="primary" onClick={handleOpen}>Edit</Button>
+              <Button className="eventpagebutton" variant="danger">DELETE</Button>
+              <Button className="eventpagebutton" variant="primary" onClick={handleOpen}>EDIT</Button>
           </Card.Body>
       </Card>
       <Modal show={show} onHide={handleClose} className="eventform-details">

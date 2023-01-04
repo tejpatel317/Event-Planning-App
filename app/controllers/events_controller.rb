@@ -17,6 +17,14 @@ class EventsController < ApplicationController
         render json: event, status: :ok
     end
 
+    def destroy
+        event = Event.find_by(id: params[:id])
+        event.destroy
+        head :no_content
+    end
+
+    private
+
     def event_params
         params.permit(:name, :location, :date, :time, :image_url)
     end

@@ -5,6 +5,8 @@ class ReservationsController < ApplicationController
         render json: reservation, status: :created
     end
 
+    private
+
     def reservation_params
         params.permit(:user_id, :event_id, :checkin_status)
     end
