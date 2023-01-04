@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Button, Modal, Form } from 'react-bootstrap'
 
-function MyEventCard({user, event, updateEvent}) {
+function MyEventCard({user, event, updateEvent, deleteEvent}) {
     const {id, name, location, date, time, image_url} = event
     const [show, setShow] = useState(false);
     const [editFormName, setEditFormName] = useState(name);
@@ -41,6 +41,19 @@ function MyEventCard({user, event, updateEvent}) {
       });
     }
 
+    function handleDelete(){
+      fetch(`/events/${id}`, {
+        method: "DELETE",
+        })
+        .then((r) => {
+          if (r.ok) {
+            deleteEvent(event)
+          } else {
+            r.json().then((err) => console.log(err)); //FOR ERROR HANDLING LOGIC WILL BE ADDED LATER
+          }
+      });
+    }
+
     function convertTo24Hour(timeString) {
       let hours = parseInt(timeString.substring(0, 2));
       let minutes = timeString.substring(3, 5);
@@ -69,7 +82,7 @@ function MyEventCard({user, event, updateEvent}) {
               <Card.Title>{name}</Card.Title>
               <Card.Subtitle>{location}</Card.Subtitle>  
               <Card.Text>{`Date: ${date}, Time: ${time}`}</Card.Text>  
-              <Button className="eventpagebutton" variant="danger">DELETE</Button>
+              <Button className="eventpagebutton" variant="danger" onClick={handleDelete}>DELETE</Button>
               <Button className="eventpagebutton" variant="primary" onClick={handleOpen}>EDIT</Button>
           </Card.Body>
       </Card>

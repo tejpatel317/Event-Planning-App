@@ -44,7 +44,11 @@ function App() {
         return event
       }
     })
+    setEvents(newEvents)
+  }
 
+  function deleteEvent(deletedEvent) {
+    const newEvents = events.filter((event)=> event.id !== deletedEvent.id)
     setEvents(newEvents)
   }
 
@@ -57,7 +61,7 @@ function App() {
             (<Routes>
               <Route path="/"/>
                 <Route index element={<Home events={events} user={user} loading={loading}/>}/>
-                <Route path="Events" element={<Events events={events} loading={loading} user={user} updateEvent={updateEvent}/>} />
+                <Route path="Events" element={<Events events={events} loading={loading} user={user} updateEvent={updateEvent} deleteEvent={deleteEvent}/>} />
                 <Route path="Create" element={<Create handleNewEvent={handleNewEvent} loading={loading}/>} />
                 <Route path="Login" element={<Login setUser={setUser} setLoading={setLoading}/>} />
                 <Route path="Signup" element={<Signup setUser={setUser} setLoading={setLoading}/>} />
