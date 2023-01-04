@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :events, only: [:index, :create]
+  resources :events, only: [:index, :create, :update]
   resources :reservations, only: [:create]
   post "/signup", to: "users#create"
   get "/me", to: "users#show"

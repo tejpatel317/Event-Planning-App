@@ -11,6 +11,12 @@ class EventsController < ApplicationController
         render json: event, status: :created
     end
 
+    def update
+        event = Event.find_by(id: params[:id])
+        event.update!(event_params)
+        render json: event, status: :ok
+    end
+
     def event_params
         params.permit(:name, :location, :date, :time, :image_url)
     end

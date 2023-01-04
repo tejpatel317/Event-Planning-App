@@ -10,8 +10,6 @@ function MyEventCard({user, event}) {
     const [editFormTime, setEditFormTime] = useState(convertTo24Hour(time));
     const [editFormImage, setEditFormImage] = useState(image_url);
 
-    console.log(time, editFormTime)
-
     function handleClose() {
       setShow(false);
     }
@@ -22,6 +20,26 @@ function MyEventCard({user, event}) {
 
     function handleSubmit(e) {
       e.preventDefault();
+      fetch(`/events/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: editFormName,
+          location: editFormLocation,
+          date: editFormDate,
+          time: editFormTime,
+          image_url: editFormImage,
+        }),
+      }).then((r) => {
+        if (r.ok) {
+          navigate('/')
+          r.json().then((newEvent) => handleNewEvent(newEvent))
+        } else {
+          r.json().then((err) => console.log(err)); //FOR ERROR HANDLING LOGIC WILL BE ADDED LATER
+        }
+      });
     }
 
     function convertTo24Hour(timeString) {
@@ -56,7 +74,7 @@ function MyEventCard({user, event}) {
               <Button className="eventpagebutton" variant="primary" onClick={handleOpen}>Edit</Button>
           </Card.Body>
       </Card>
-      <Modal show={show} onHide={handleClose} className="form-details">
+      <Modal show={show} onHide={handleClose} className="eventform-details">
           <Form onSubmit={handleSubmit}>
             <h2 variant="success">Edit Event</h2>
             <Form.Group controlId="formName">
@@ -107,11 +125,11 @@ function MyEventCard({user, event}) {
                 required
               />
             </Form.Group>
-            <Modal.Footer>
+            <Modal.Footer className="modalfooter">
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
-              <Button variant="primary" onClick={handleClose}>
+              <Button variant="primary" onClick={handleClose}  type="submit">
                 Save Changes
               </Button>
             </Modal.Footer>
