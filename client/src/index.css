@@ -60,7 +60,7 @@
   padding: 0, 30px;
 }
 
-.card button{
+.homepagebutton{
   display: block;
   width: 100%;
   font-weight: 600;
@@ -78,4 +78,10 @@
   background-image: linear-gradient(to right, green, black);
   letter-spacing: 4px;
   -webkit-text-stroke: 2px green;
+}
+
+.eventpagebutton{
+  display: block;
+  width: 50%;
+  font-weight: 600;
 }

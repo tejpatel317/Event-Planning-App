@@ -35,7 +35,7 @@ function HomeCard({user, event}) {
             <Card.Title>{name}</Card.Title>
             <Card.Subtitle>{location}</Card.Subtitle>  
             <Card.Text>{`Date: ${date}, Time: ${time}`}</Card.Text>  
-            <Button variant="success" onClick={handleRSVP}>RSVP</Button>
+            <Button className="homepagebutton" variant="success" onClick={handleRSVP}>RSVP</Button>
         </Card.Body>
     </Card>
   )
