@@ -1,7 +1,13 @@
 class EventsController < ApplicationController
 
     def index
-        render json: Event.all
+        events = Event.where.not(user_id: session[:user_id])
+        render json: events
+    end
+    
+    def userevents
+        events = Event.where(user_id: session[:user_id])
+        render json: events
     end
 
     def create

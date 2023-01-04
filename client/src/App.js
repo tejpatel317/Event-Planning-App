@@ -10,6 +10,7 @@ import Signup from './Signup';
 function App() {
   const [user, setUser] = useState(null);
   const [events, setEvents] = useState([])
+  const [userEvents, setUserEvents] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -26,13 +27,16 @@ function App() {
       .then((events) => setEvents(events));
   }, []);
 
+  useEffect(() => {
+    fetch("/events/user")
+      .then((r) => r.json())
+      .then((userEvents) => setUserEvents(userEvents));
+  }, []);
+
 
   function handleNewEvent(newEvent) {
-    setEvents([...events, newEvent])
+    setEvents([...userEvents, setUserEvents])
   }
-
-  console.log(events)
-
 
   return (
     <div className="App">
@@ -41,7 +45,7 @@ function App() {
         <Routes>
             <Route path="/"/>
               <Route index element={<Home events={events} user={user}/>}/>
-              <Route path="Events" element={<Events/>} />
+              <Route path="Events" element={<Events userEvents={userEvents}/>} />
               <Route path="Create" element={<Create handleNewEvent={handleNewEvent}/>} />
               <Route path="Login" element={<Login setUser={setUser}/>} />
               <Route path="Signup" element={<Signup setUser={setUser}/>} />
