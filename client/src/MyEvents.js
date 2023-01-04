@@ -2,9 +2,9 @@ import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 import MyEventCard from './MyEventCard.js'
 
-function MyEvents({userEvents, user}) {
+function MyEvents({events, user}) {
 
-  const userEventCards = userEvents.map((event) => {
+  const userEventCards = events.map((event) => {
     return (<Col key={event.id} className="col-md-3 p-3"><MyEventCard event={event} user={user}/></Col>)
   })
 

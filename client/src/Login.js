@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import {Form, Button} from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
-function Login({setUser}) {
+function Login({setUser, setLoading}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true)
     fetch("/login", {
       method: "POST",
       headers: {

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Form, Button} from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
-function Signup({setUser}) {
+function Signup({setUser, setLoading}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
@@ -12,6 +12,7 @@ function Signup({setUser}) {
   const navigate = useNavigate();
 
   function handleSubmit(e) {
+    setLoading(true);
     e.preventDefault();
     fetch("/signup", {
       method: "POST",

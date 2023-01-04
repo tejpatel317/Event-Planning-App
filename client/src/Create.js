@@ -2,13 +2,17 @@ import React, { useState } from 'react'
 import {Form, Button} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-function Create({handleNewEvent}) {
+function Create({handleNewEvent, loading}) {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [date, setDate] = useState(new Date().toJSON().slice(0,10));
   const [time, setTime] = useState('');
   const [image, setImage] = useState('');
   const navigate = useNavigate();
+
+  if (loading) {
+    return <div className="app-container"></div>;
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
