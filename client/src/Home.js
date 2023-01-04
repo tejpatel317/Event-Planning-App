@@ -9,7 +9,7 @@ function Home({events, user, loading}) {
     return <div className="app-container"></div>;
   }
 
-  const homeCards = events.filter(((event) => event.user_id === user.id)).map((event) => {
+  const homeCards = events.filter(((event) => event.user_id !== user.id)).map((event) => {
     return (<Col key={event.id} className="col-md-3 p-3"><HomeCard event={event} user={user}/></Col>)
   })
 
