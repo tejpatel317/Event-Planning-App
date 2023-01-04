@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Button, Modal, Form } from 'react-bootstrap'
 
-function MyEventCard({user, event}) {
+function MyEventCard({user, event, updateEvent}) {
     const {id, name, location, date, time, image_url} = event
     const [show, setShow] = useState(false);
     const [editFormName, setEditFormName] = useState(name);
@@ -34,8 +34,7 @@ function MyEventCard({user, event}) {
         }),
       }).then((r) => {
         if (r.ok) {
-          navigate('/')
-          r.json().then((newEvent) => handleNewEvent(newEvent))
+          r.json().then((updatedEvent) => updateEvent(updatedEvent))
         } else {
           r.json().then((err) => console.log(err)); //FOR ERROR HANDLING LOGIC WILL BE ADDED LATER
         }
