@@ -1,5 +1,6 @@
 import React from 'react'
 import MyEvents from './MyEvents'
+import Reservation from './Reservation';
 
 function Events({events, loading, user, updateEvent, deleteEvent}) {
 
@@ -12,6 +13,7 @@ function Events({events, loading, user, updateEvent, deleteEvent}) {
     <h2 className="eventtitles">MY EVENTS</h2>
     <MyEvents events={events} user={user} updateEvent={updateEvent} deleteEvent={deleteEvent}/>
     <h2 className="eventtitles">RESERVATIONS</h2>
+    <Reservation events={events} user={user}/>
   </div>
   )
 }
