@@ -13,6 +13,8 @@ function App() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  console.log(events)
+
   useEffect(() => {
     setLoading(true);
     fetch("/me").then((r) => {
