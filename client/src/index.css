@@ -104,3 +104,50 @@
   font-weight: 600;
   margin-bottom: 0;
 }
+
+.progress-bar {
+  position: relative;
+  height: 20px;
+  background-color: blue;
+  border-color: black;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.progress-bar-completed {
+  position: absolute;
+  height: 100%;
+  background-color: lightgreen;
+  border-radius: 5px;
+  position: relative;
+  min-width: 50px; 
+}
+
+.progress-bar-completed:before {
+  content: attr(data-percentage) '%';
+  display: block;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.unathorizederror{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 2px solid red;
+  border-radius: 5px;
+  background-color: #ffcccc;
+  color: red;
+  font-size: 24px;
+  text-align: center;
+}

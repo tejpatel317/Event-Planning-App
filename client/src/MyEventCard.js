@@ -10,6 +10,19 @@ function MyEventCard({user, event, updateEvent, deleteEvent}) {
     const [editFormTime, setEditFormTime] = useState(convertTo24Hour(time));
     const [editFormImage, setEditFormImage] = useState(image_url);
 
+
+    const totalReservations = event.reservations.length
+
+    const checkedInReservations = event.reservations.reduce((acc, reservation) => {
+        return reservation.checkin_status ? acc + 1 : acc
+      }, 0);
+
+    const percentage = Math.round((checkedInReservations / totalReservations) * 100);
+
+    console.log(checkedInReservations, totalReservations)
+
+    console.log(percentage)
+    
     function handleClose() {
       setShow(false);
     }
@@ -81,7 +94,14 @@ function MyEventCard({user, event, updateEvent, deleteEvent}) {
           <Card.Body>
               <Card.Title>{name}</Card.Title>
               <Card.Subtitle>{location}</Card.Subtitle>  
-              <Card.Text>{`Date: ${date}, Time: ${time}`}</Card.Text>  
+              <Card.Text className='m-0'>{`Date: ${date}, Time: ${time}`}</Card.Text>  
+              <div className="progress-bar" style={{ width: `100%`, backgroundColor: 'grey' }}>
+                <div
+                  className="progress-bar-completed"
+                  style={{ width: `${percentage}%` }}
+                  data-percentage={percentage}
+                ></div>
+              </div> 
               <Button className="eventpagebutton" variant="danger" onClick={handleDelete}>DELETE</Button>
               <Button className="eventpagebutton" variant="primary" onClick={handleOpen}>EDIT</Button>
           </Card.Body>

@@ -5,6 +5,12 @@ class ReservationsController < ApplicationController
         render json: reservation, status: :created
     end
 
+    def update
+        reservation = Reservation.find_by(id: params[:id])
+        reservation.update!(reservation_params)
+        render json: reservation, status: :ok
+    end
+
     def destroy
         reservation = Reservation.find_by(id: params[:id])
         reservation.destroy

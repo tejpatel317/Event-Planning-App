@@ -63,9 +63,6 @@ function App() {
     setEvents(newEvents)
   }
 
-  console.log(events)
-
-
   function deleteReservation(selectedReservation) {
     const newEvents = [...events]
     const eventIndex = events.findIndex(event => event.id === selectedReservation.event_id)
@@ -74,6 +71,19 @@ function App() {
     setEvents(newEvents)
   }
 
+  function updateReservation(checkinReservation) {
+    const newEvents = [...events]
+    const eventIndex = events.findIndex(event => event.id === checkinReservation.event_id)
+    const updatedReservation = events[eventIndex].reservations.map((reservation) => {
+      if (reservation.id === checkinReservation.id) {
+        return checkinReservation
+      } else {
+        return reservation
+      }
+    })
+    newEvents[eventIndex].reservations = updatedReservation
+    setEvents(newEvents)
+  }
 
   return (
     <div className="App">
@@ -84,7 +94,7 @@ function App() {
             (<Routes>
               <Route path="/"/>
                 <Route index element={<Home events={events} user={user} loading={loading} addReservation={addReservation}/>}/>
-                <Route path="Events" element={<Events events={events} loading={loading} user={user} updateEvent={updateEvent} deleteEvent={deleteEvent} deleteReservation={deleteReservation}/>} />
+                <Route path="Events" element={<Events events={events} loading={loading} user={user} updateEvent={updateEvent} deleteEvent={deleteEvent} deleteReservation={deleteReservation} updateReservation={updateReservation}/>} />
                 <Route path="Create" element={<Create handleNewEvent={handleNewEvent} loading={loading}/>} />
                 <Route path="Login" element={<Login setUser={setUser} setLoading={setLoading}/>} />
                 <Route path="Signup" element={<Signup setUser={setUser} setLoading={setLoading}/>} />
