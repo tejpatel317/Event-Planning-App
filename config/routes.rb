@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :events, only: [:index, :create, :update, :destroy]
-  resources :reservations, only: [:create]
+  resources :reservations, only: [:create, :destroy]
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"
