@@ -1,12 +1,11 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 
-function ReservationCard({user, event}) {
+function ReservationCard({user, event, deleteReservation}) {
 
-    const {id, name, location, date, time, image_url, reservations} = event
+    const {name, location, date, time, image_url} = event
 
     const selectedReservation = event.reservations.find(reservation => reservation.user_id === user.id)
-
 
     function handleDeleteReservation(){
         fetch(`/reservations/${selectedReservation.id}`, {
@@ -14,7 +13,7 @@ function ReservationCard({user, event}) {
           })
           .then((r) => {
             if (r.ok) {
-              console.log(reservations)
+              deleteReservation(selectedReservation)
             } else {
               r.json().then((err) => console.log(err)); //FOR ERROR HANDLING LOGIC WILL BE ADDED LATER
             }
@@ -29,8 +28,8 @@ function ReservationCard({user, event}) {
               <Card.Title>{name}</Card.Title>
               <Card.Subtitle>{location}</Card.Subtitle>  
               <Card.Text>{`Date: ${date}, Time: ${time}`}</Card.Text>  
-              <Button className="eventpagebutton" variant="danger">CANCEL RSVP</Button>
-              <Button className="eventpagebutton" variant="success" onClick={handleDeleteReservation}>CHECK IN</Button>
+              <Button className="eventpagebutton" variant="danger" onClick={handleDeleteReservation}>CANCEL RSVP</Button>
+              <Button className="eventpagebutton" variant="success">CHECK IN</Button>
           </Card.Body>
       </Card>
     </>
