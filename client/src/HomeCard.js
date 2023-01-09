@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 
-function HomeCard({user, event}) {
+function HomeCard({user, event, addReservation}) {
     const {id, name, location, date, time, image_url} = event
     const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ function HomeCard({user, event}) {
       }).then((r) => {
         if (r.ok) {
           navigate('/events')
-          r.json().then((reservation) => console.log(reservation))
+          r.json().then((reservation) => addReservation(reservation))
         } else {
           r.json().then((err) => console.log(err)); //FOR ERROR HANDLING LOGIC WILL BE ADDED LATER
         }

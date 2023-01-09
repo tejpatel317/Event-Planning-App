@@ -13,8 +13,6 @@ function App() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  console.log(events)
-
   useEffect(() => {
     setLoading(true);
     fetch("/me").then((r) => {
@@ -54,6 +52,17 @@ function App() {
     setEvents(newEvents)
   }
 
+  function addReservation(reservation) {
+    const newEvents = events.map((event) => {
+      if (event.id === reservation.event_id) {
+        return { ...event, reservations: [...event.reservations, reservation]}
+      } else {
+        return event
+      }
+    })
+    setEvents(newEvents)
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -62,7 +71,7 @@ function App() {
           user ?
             (<Routes>
               <Route path="/"/>
-                <Route index element={<Home events={events} user={user} loading={loading}/>}/>
+                <Route index element={<Home events={events} user={user} loading={loading} addReservation={addReservation}/>}/>
                 <Route path="Events" element={<Events events={events} loading={loading} user={user} updateEvent={updateEvent} deleteEvent={deleteEvent}/>} />
                 <Route path="Create" element={<Create handleNewEvent={handleNewEvent} loading={loading}/>} />
                 <Route path="Login" element={<Login setUser={setUser} setLoading={setLoading}/>} />

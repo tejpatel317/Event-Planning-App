@@ -2,7 +2,7 @@ import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 import HomeCard from './HomeCard'
 
-function Home({events, user, loading}) {
+function Home({events, user, loading, addReservation}) {
 
 
   if (loading) {
@@ -10,8 +10,8 @@ function Home({events, user, loading}) {
   }
 
   const homeCards = events.filter(((event) => event.user_id !== user.id)).filter
-    ((event) => !event.users.some(oneuser => oneuser.id === user.id)).map((event) => {
-    return (<Col key={event.id} className="col-md-3 p-3"><HomeCard event={event} user={user}/></Col>)
+    ((event) => !event.reservations.some(reservation => reservation.user_id === user.id)).map((event) => {
+    return (<Col key={event.id} className="col-md-3 p-3"><HomeCard event={event} user={user} addReservation={addReservation}/></Col>)
   })
 
 
