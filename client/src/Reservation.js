@@ -8,7 +8,7 @@ function Reservation({events, user, updateEvent, deleteEvent}) {
 
     console.log(a)
 
-  const reservationCards = events.filter(((event) => event.users.some(user => user.id === user.id))).map((event) => {
+  const reservationCards = events.filter(((event) => event.users.some(oneuser => oneuser.id === user.id))).map((event) => {
     return (<Col key={event.id} className="col-md-3 p-3"><ReservationCard event={event} user={user} updateEvent={updateEvent} deleteEvent={deleteEvent}/></Col>)
   })
 
