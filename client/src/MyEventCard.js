@@ -17,12 +17,12 @@ function MyEventCard({user, event, updateEvent, deleteEvent}) {
         return reservation.checkin_status ? acc + 1 : acc
       }, 0);
 
-    const percentage = Math.round((checkedInReservations / totalReservations) * 100);
+      let percentage = 0;
+      
+      if (totalReservations !== 0) {
+        percentage = Math.round((checkedInReservations / totalReservations) * 100);
+      }
 
-    console.log(checkedInReservations, totalReservations)
-
-    console.log(percentage)
-    
     function handleClose() {
       setShow(false);
     }
